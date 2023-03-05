@@ -1,4 +1,4 @@
-const { sequelize, Sequelize } = require("./db.js");
+const { sequelize, Sequelize } = require("../db.js");
 
 const Cheese = sequelize.define("Cheese", {
   title: Sequelize.STRING,
