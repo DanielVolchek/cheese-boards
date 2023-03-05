@@ -133,4 +133,21 @@ describe("Database Model Tests", () => {
       expect(boards[1].id).toBe(board2.id);
     });
   });
+
+  describe("eager loading tests", () => {
+    it("can eager load users with boards", async () => {
+      const usersWithBoards = await User.findAll({ include: Board });
+      expect(Array.isArray(usersWithBoards)).toBe(true);
+    });
+
+    it("can eager load boards with cheeses", async () => {
+      const boardsWithCheeses = await Board.findAll({ include: Cheese });
+      expect(Array.isArray(boardsWithCheeses)).toBe(true);
+    });
+
+    it("can eager load cheeses with boards", async () => {
+      const cheesesWithBoards = await Cheese.findAll({ include: Board });
+      expect(Array.isArray(cheesesWithBoards)).toBe(true);
+    });
+  });
 });
